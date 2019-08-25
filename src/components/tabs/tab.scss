@@ -28,6 +28,9 @@ body {
   align-items: center;
   border-radius: 20%;
   transition: background 0.05s ease-in;
+  * {
+    pointer-events: none;
+  }
   .close-icon {
     svg {
       height: 8px;
@@ -161,4 +164,7 @@ body {
   align-items: center;
   border-bottom: 3px solid #383838;
   overflow: hidden;
+}
+.active {
+  display: block;
 }
