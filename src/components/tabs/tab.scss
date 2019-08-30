@@ -30,6 +30,13 @@ body {
   transition: background 0.05s ease-in;
   * {
     pointer-events: none;
+    svg {
+      height: 8px;
+      width: 8px;
+      * {
+        fill: #fff;
+      }
+    }
   }
   .close-icon {
     svg {

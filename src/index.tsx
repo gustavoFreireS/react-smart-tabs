@@ -1,9 +1,9 @@
 import React, { Component, useState } from "react";
 import ReactDOM from "react-dom";
-import TabInterface from "./components/testInterface";
+import App from "./components/app";
 import './components/tabs/tab.scss';
 
 ReactDOM.render(
-  <TabInterface />,
+  <App />,
   document.getElementById("example")
 );

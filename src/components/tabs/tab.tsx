@@ -16,7 +16,7 @@ const Tab = (props: TabProps) => {
   return (
     <div
       className="tab-wrapper"
-      key={uuid()}
+      // key={uuid()}
     >
       <div>
         {props.children}
