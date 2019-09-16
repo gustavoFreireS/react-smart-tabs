@@ -231,6 +231,7 @@ const TabBar = (props: TabBarProps) => {
         // setActive(frontTab);
       }
     }
+    setTabId(null);
   };
 
   // set a tab as the active tab based on it's id
