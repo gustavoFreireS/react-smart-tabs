@@ -272,63 +272,65 @@ const TabBar = (props: TabBarProps) => {
   };
   return (
     <Fragment>
-      <div className={`bar__wrapper ${props.className}`}>
-        <ul
-          className="tab__bar"
-          onMouseMove={elementDrag}
-          onMouseLeave={closeDragElement}
-          ref={tabBar}
-        >
-          {tabList.length > 0 &&
-            !props.hiddenTabs &&
-            tabList.map((child: any, i) => {
-              const className = child.tabComponent.props.className;
-              const activeClassName = child.tabComponent.props.classNameActive;
-              const closeableTab = child.tabComponent.props.closeable;
-              const { closeable } = props;
-              const shouldClose =
-                closeableTab !== undefined
-                  ? closeableTab && closeable
-                  : closeable;
-              return (
-                <li
-                  id={child.id}
-                  key={child.id}
-                  ref={refList.current[i]}
-                  className={
-                    checkActive(child)
-                      ? `${activeClassName || 'active'} reposition`
-                      : className
-                  }
-                  onMouseDown={e => dragMouseDown(e, child)}
-                  onMouseUp={closeDragElement}
-                >
-                  {child.tabComponent.props.tabHeader ||
-                    child.tabComponent.props.text}
-                  {shouldClose && (
-                    <span
-                      ref={closeElement}
-                      className="close"
-                      onClick={e => removeTab(child.id, e, child)}
-                    >
-                      {props.closeIcon || (
-                        <ReactSVG
-                          className="close-icon"
-                          src={cancelSvg.toString()}
-                        />
-                      )}
-                    </span>
-                  )}
-                </li>
-              );
-            })}
-        </ul>
-        {props.newTab && (
-          <span className="addButton" onClick={e => addTab(e)}>
-            +
-          </span>
-        )}
-      </div>
+      {!props.hiddenTabs && (
+        <div className={`bar__wrapper ${props.className}`}>
+          <ul
+            className="tab__bar"
+            onMouseMove={elementDrag}
+            onMouseLeave={closeDragElement}
+            ref={tabBar}
+          >
+            {tabList.length > 0 &&
+              tabList.map((child: any, i) => {
+                const className = child.tabComponent.props.className;
+                const activeClassName =
+                  child.tabComponent.props.classNameActive;
+                const closeableTab = child.tabComponent.props.closeable;
+                const { closeable } = props;
+                const shouldClose =
+                  closeableTab !== undefined
+                    ? closeableTab && closeable
+                    : closeable;
+                return (
+                  <li
+                    id={child.id}
+                    key={child.id}
+                    ref={refList.current[i]}
+                    className={
+                      checkActive(child)
+                        ? `${activeClassName || 'active'} reposition`
+                        : className
+                    }
+                    onMouseDown={e => dragMouseDown(e, child)}
+                    onMouseUp={closeDragElement}
+                  >
+                    {child.tabComponent.props.tabHeader ||
+                      child.tabComponent.props.text}
+                    {shouldClose && (
+                      <span
+                        ref={closeElement}
+                        className="close"
+                        onClick={e => removeTab(child.id, e, child)}
+                      >
+                        {props.closeIcon || (
+                          <ReactSVG
+                            className="close-icon"
+                            src={cancelSvg.toString()}
+                          />
+                        )}
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
+          </ul>
+          {props.newTab && (
+            <span className="addButton" onClick={e => addTab(e)}>
+              +
+            </span>
+          )}
+        </div>
+      )}
       {tabList.length > 0 &&
         tabList.map((child: any) => {
           return (
