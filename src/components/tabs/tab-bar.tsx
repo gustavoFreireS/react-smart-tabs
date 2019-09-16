@@ -9,7 +9,7 @@ import {
   ReactChildren
 } from 'react';
 import ReactSVG from 'react-svg';
-import cancelSvg from './cancel.svg';
+// import cancelSvg from './cancel.svg';
 import Tab from './tab';
 import uuid from 'uuid';
 import { arrayMove } from './utils';
@@ -310,12 +310,16 @@ const TabBar = (props: TabBarProps) => {
                       className="close"
                       onClick={e => removeTab(child.id, e, child)}
                     >
-                      {props.closeIcon || (
-                        <ReactSVG
-                          className="close-icon"
-                          src={cancelSvg.toString()}
-                        />
-                      )}
+                      {
+                        props.closeIcon
+                        // ||
+                        // (
+                        //   <ReactSVG
+                        //     className="close-icon"
+                        //     src={cancelSvg.toString()}
+                        //   />
+                        // )
+                      }
                     </span>
                   )}
                 </li>

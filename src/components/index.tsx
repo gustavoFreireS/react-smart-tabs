@@ -1,8 +1,5 @@
 import Tab from './tabs/tab';
 import TabBar from './tabs/tab-bar';
-import './tabs/tab.scss';
+// import './tabs/tab.scss';
 
-export {
-  Tab,
-  TabBar,
-};
+export { Tab, TabBar };
