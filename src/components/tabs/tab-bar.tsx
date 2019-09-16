@@ -224,12 +224,13 @@ const TabBar = (props: TabBarProps) => {
       const backTab = tabList[tabList.indexOf(tab) + 1];
       const frontTab = tabList[tabList.indexOf(tab) - 1];
       if (backTab) {
+        props.onTabClose && props.onTabClose(tab, backTab);
         setActive(backTab);
       } else {
+        props.onTabClose && props.onTabClose(tab, frontTab);
         setActive(frontTab);
       }
     }
-    props.onTabClose && props.onTabClose(tab, activeTab);
   };
 
   // set a tab as the active tab based on it's id
