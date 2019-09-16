@@ -10,6 +10,7 @@ export interface TabProps {
   className?: string;
   classNameActive?: string;
   closeable?: boolean;
+  blocked?: boolean;
 }
 
 const Tab = (props: TabProps) => {
@@ -18,10 +19,8 @@ const Tab = (props: TabProps) => {
       className="tab-wrapper"
       // key={uuid()}
     >
-      <div>
-        {props.children}
-      </div>
-    </div >
+      <div>{props.children}</div>
+    </div>
   );
 };
 export default Tab;
