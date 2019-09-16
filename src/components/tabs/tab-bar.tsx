@@ -91,8 +91,7 @@ const TabBar = (props: TabBarProps) => {
       const tabs = list.map((tab, i) => {
         return {
           tabComponent: tab,
-          id:
-            tab.props === activeTab.tabComponent.props ? activeTab.id : uuid(),
+          id: uuid(),
           arrayIndex: i
         };
       });
@@ -231,7 +230,7 @@ const TabBar = (props: TabBarProps) => {
         // setActive(frontTab);
       }
     }
-    setTabId(null);
+    setTabId('');
   };
 
   // set a tab as the active tab based on it's id
