@@ -229,6 +229,8 @@ const TabBar = (props: TabBarProps) => {
         props.onTabClose && props.onTabClose(tab, frontTab);
         // setActive(frontTab);
       }
+    } else {
+      props.onTabClose(tab, null);
     }
     setTabId('');
   };
