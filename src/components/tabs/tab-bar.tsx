@@ -271,9 +271,9 @@ const TabBar = (props: TabBarProps) => {
     return false;
   };
   return (
-    <Fragment>
+    <div className={props.className}>
       {!props.hiddenTabs && (
-        <div className={`bar__wrapper ${props.className}`}>
+        <div className={'bar__wrapper'}>
           <ul
             className="tab__bar"
             onMouseMove={elementDrag}
@@ -345,7 +345,7 @@ const TabBar = (props: TabBarProps) => {
             </div>
           );
         })}
-    </Fragment>
+    </div>
   );
 };
 export default TabBar;

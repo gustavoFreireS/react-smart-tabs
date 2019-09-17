@@ -175,3 +175,38 @@ body {
 .active {
   display: block;
 }
+.test-tabbar{
+  display: flex;
+  flex-direction: row;
+  .tab-panel{
+    background-color: #383838;
+  }
+  .bar__wrapper {
+  height: 500px;
+  flex-direction: row;
+  width: 55px;
+  margin: 0;
+  
+  .tab__bar {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    
+    li {
+      box-sizing: border-box;
+      min-width: initial;
+      max-width: initial;
+      width: inherit;
+      border-radius: 0;
+      height: 55px;
+      margin: 0;
+    }
+  }
+  .tab-panel {
+    width: 50%;
+  }
+
+}
+}

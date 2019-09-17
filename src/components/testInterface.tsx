@@ -4,7 +4,7 @@ import Tab from './tabs/tab';
 import uuid from 'uuid';
 import { any } from 'prop-types';
 
-const tatabs = ['a', 'b', 'c', 'd'];
+const tatabs = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 export interface TabxProps {
   history: any;
 }
@@ -13,20 +13,26 @@ const TabBx = (props: TabxProps) => {
     <div>
       <TabBar
         onTabClick={() => props.history.push('/test/' + uuid())}
-        closeable
-        reorderable
+        // closeable
+        // reorderable
+        className="test-tabbar"
       >
         <Tab text="first">
           <form>
             <input />
           </form>
         </Tab>
-        <Tab text="qweqweqwxeqwewq">
+        <Tab text="second">
           <form>
             <input />
           </form>
         </Tab>
-        <Tab text="qweqweqweasdqwewq">
+        <Tab text="third">
+          <form>
+            <input />
+          </form>
+        </Tab>
+        <Tab text="fourty">
           <form>
             <input />
           </form>
