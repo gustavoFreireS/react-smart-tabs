@@ -296,6 +296,7 @@ const TabBar = (props: TabBarProps) => {
                 return (
                   <li
                     id={child.id}
+                    key={child.id}
                     ref={refList.current[i]}
                     className={
                       checkActive(child)
