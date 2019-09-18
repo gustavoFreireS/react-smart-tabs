@@ -338,6 +338,7 @@ const TabBar = (props: TabBarProps) => {
           return (
             <div
               id={`${child.id}-panel`}
+              key={`${child.id}-panel`}
               className={`tab-panel ${
                 checkActive(child) && !props.hiddenPanel ? 'active' : ''
               }`}
