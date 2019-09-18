@@ -121,7 +121,7 @@ const TabBar = (props: TabBarProps) => {
   }
 
   function dragMouseDown(e: any, tab: any) {
-    if ('close' === e.target.className && tab.tabCOmponent.blocked) return;
+    if ('close' === e.target.className || tab.tabCOmponent.blocked) return;
     if (props.onTabClick) {
       props.onTabClick(tab);
     }
