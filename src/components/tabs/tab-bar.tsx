@@ -14,7 +14,7 @@ import Tab from './tab';
 import uuid from 'uuid';
 import { arrayMove } from './utils';
 
-interface TabType {
+interface Tab {
   tabComponent: ReactElement;
   id: string;
 }
@@ -26,7 +26,7 @@ export interface TabBarProps {
   closeable?: boolean; // booblean to activate the closeable behavior on tabs
   onTabClick?: (tab: ReactElement) => void;
   // Function to be called when the tab List changes it receives the modified tabList
-  onTabsChange?: (modifiedList: TabType[], tabList?: ReactChildren) => void;
+  onTabsChange?: (modifiedList: Tab[], tabList?: ReactChildren) => void;
   closeIcon?: ReactElement;
   onTabClose?: (tab: ReactElement, nextTab: ReactElement) => void;
   className?: string;
@@ -76,7 +76,7 @@ const TabBar = (props: TabBarProps) => {
     if (tabList.length === 0 && list.length > 1) return;
     // modify tabLIst when a tab is added from outside
     if (list.length > tabList.length && list.length > 0) {
-      tabList.find((tab: any) => tab.tabComponent.props === last.props);
+      tabList.find(tab => tab.tabComponent.props === last.props);
       const newElement = {
         tabComponent: last,
         id: uuid(),
