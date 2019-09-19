@@ -81,8 +81,7 @@ body {
     max-width: 145px;
     width: 145px;
     transition: background 0.15s ease-in;
-    align-items: center;
-    justify-content: center; }
+    align-items: flex-start; }
     .tab__bar li.active:after {
       content: "";
       position: absolute;

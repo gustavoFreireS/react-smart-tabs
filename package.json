@@ -69,6 +69,7 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-svg": "^10.0.17",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.1.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
