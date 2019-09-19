@@ -95,8 +95,7 @@ body {
     max-width: 145px;
     width: 145px;
     transition: background 0.15s ease-in;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
     &.active {
       &:after {
         content: "";

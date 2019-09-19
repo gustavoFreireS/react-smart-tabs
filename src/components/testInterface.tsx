@@ -13,9 +13,8 @@ const TabBx = (props: TabxProps) => {
     <div>
       <TabBar
         onTabClick={() => props.history.push('/test/' + uuid())}
-        // closeable
-        // reorderable
-        className="test-tabbar"
+        closeable
+        reorderable
       >
         <Tab text="first">
           <form>

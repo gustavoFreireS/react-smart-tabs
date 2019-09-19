@@ -3,7 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: ['@babel/polyfill', './src/index.tsx'],
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
   },
@@ -15,17 +15,16 @@ module.exports = {
     rules: [
       {
         test: /\.(css|scss|sass)$/i,
-        use: ['style-loader', 'postcss-loader'],
+        use: ['style-loader', 'postcss-loader']
       },
       {
         test: /\.svg?$/,
-        loader: 'file-loader',
+        loader: 'file-loader'
       },
       {
         test: /\.tsx?$/,
-        use: ['awesome-typescript-loader'],
-      },
-      
+        use: ['babel-loader', 'awesome-typescript-loader']
+      }
     ]
   },
   plugins: [
@@ -33,4 +32,4 @@ module.exports = {
       template: './index.html'
     })
   ]
-}
+};
