@@ -257,6 +257,7 @@ const TabBar = (props: TabBarProps) => {
     const currentTab =
       active && active.props === child.tabComponent.props ? active : null;
     if (currentTab) {
+      setActive(child);
       return true;
     }
     if (child.id === tabId) {
