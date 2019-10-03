@@ -102,11 +102,11 @@ const TabBar = (props: TabBarProps) => {
     if (list.length === tabList.length) {
       console.log('mudou props');
       const active = list.find(tab => tab.props.active === true);
+      if (dragged) return;
       if (active) {
         console.log(active);
         setActive(active);
       }
-      if (dragged) return;
       const tabs = tabList.map(tab => {
         const item = list.find((element, i) => i === tab.arrayIndex);
         return {
