@@ -101,7 +101,7 @@ const TabBar = (props: TabBarProps) => {
     // modify tabLIst when a tab is modified from outside
     if (list.length === tabList.length) {
       console.log('mudou props');
-      const active = list.find(tab => tab.active === true);
+      const active = list.find(tab => tab.props.active === true);
       if (active) {
         console.log(active);
         setActive(active);
