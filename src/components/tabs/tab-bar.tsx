@@ -73,6 +73,7 @@ const TabBar = (props: TabBarProps) => {
   useEffect(() => {
     const list = React.Children.toArray(props.children);
     const last = list[list.length - 1];
+
     if (tabList.length === 0 && list.length > 1) return;
     // modify tabLIst when a tab is added from outside
     if (list.length > tabList.length && list.length > 0) {
@@ -99,7 +100,12 @@ const TabBar = (props: TabBarProps) => {
     }
     // modify tabLIst when a tab is modified from outside
     if (list.length === tabList.length) {
+      console.log('mudou props');
       if (dragged) return;
+      const active = list.find(tab => tab.active === true);
+      if (active) {
+        setActive(active);
+      }
       const tabs = tabList.map(tab => {
         const item = list.find((element, i) => i === tab.arrayIndex);
         return {
@@ -256,9 +262,6 @@ const TabBar = (props: TabBarProps) => {
     });
     const currentTab =
       active && active.props === child.tabComponent.props ? active : null;
-    if (tabId === '' && currentTab) {
-      setActive(child);
-    }
     if (currentTab) {
       return true;
     }
