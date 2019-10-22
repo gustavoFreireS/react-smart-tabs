@@ -11,6 +11,7 @@ import {
 import ReactSVG from 'react-svg';
 import cancelSvg from './cancel.svg';
 import Tab from './tab';
+import TabPanel from './tab-panel';
 import uuid from 'uuid';
 import { arrayMove } from './utils';
 
@@ -349,7 +350,7 @@ const TabBar = (props: TabBarProps) => {
                 checkActive(child) && !props.hiddenPanel ? 'active' : ''
               }`}
             >
-              {child.tabComponent}
+              <TabPanel>{child.tabComponent}</TabPanel>
             </div>
           );
         })}
