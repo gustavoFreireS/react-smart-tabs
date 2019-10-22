@@ -13,7 +13,7 @@ export interface ITabProps {
 
 const Tab = (props: ITabProps) => {
   return (
-    <div className="tab-wrapper" key={uuid()}>
+    <div className="tab-wrapper">
       <div>{props.children}</div>
     </div>
   );

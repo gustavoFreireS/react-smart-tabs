@@ -97,7 +97,6 @@ body {
     border-bottom-right-radius: -30%;
     border-bottom-left-radius: -30%;
     cursor: pointer;
-    transition: background 0.15s ease-in;
 
     &.active {
       z-index: 99;
@@ -136,8 +135,6 @@ body {
     }
 
     &:hover {
-      background: #292929;
-
       & > .close {
         &:before {
           background: transparent;
@@ -179,4 +176,19 @@ body {
   overflow: hidden;
   background: #222222;
   border-bottom: 3px solid #383838;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
