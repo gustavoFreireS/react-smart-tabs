@@ -3,11 +3,17 @@ import TabBar from './tabs/tab-bar';
 import Tab from './tabs/tab';
 import uuid from 'uuid';
 import { any } from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 const tatabs = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 export interface TabxProps {
   history: any;
 }
+const TabW = ({ history }) => {
+  console.log(history);
+  console.log('re-render');
+  return <div />;
+};
 const TabBx = (props: TabxProps) => {
   return (
     <div>
@@ -17,9 +23,7 @@ const TabBx = (props: TabxProps) => {
         reorderable
       >
         <Tab text="first">
-          <form>
-            <input />
-          </form>
+          <TabW history={props.history} />
         </Tab>
         <Tab text="second">
           <form>
@@ -41,4 +45,4 @@ const TabBx = (props: TabxProps) => {
   );
 };
 
-export default TabBx;
+export default withRouter(TabBx);

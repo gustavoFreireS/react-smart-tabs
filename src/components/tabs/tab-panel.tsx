@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { withRouter } from 'react-router-dom';
 interface Props {
   children: any;
 }
@@ -7,9 +7,9 @@ interface Props {
 const areEqual = (prevProps: any, nextProps: any) => {
   return true;
 };
-const TabPanel = React.memo((props: Props) => {
+const TabPanel = (props: Props) => {
   console.log('tabPanel render');
   return <div>{props.children}</div>;
-}, areEqual);
+};
 
 export default TabPanel;
