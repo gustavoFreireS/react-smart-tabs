@@ -106,11 +106,18 @@ const TabBar = (props: TabBarProps) => {
       if (active) {
         setActive(active);
       }
-      const tabs = tabList.map(tab => {
-        const item = list.find((element, i) => i === tab.arrayIndex);
+      // const tabs = tabList.map(tab => {
+      //   const item = list.find((element, i) => i === tab.arrayIndex);
+      //   return {
+      //     ...tab,
+      //     tabComponent: item
+      //   };
+      // });
+      const tabs = React.Children.toArray(props.children).map((tab, i) => {
         return {
-          ...tab,
-          tabComponent: item
+          tabComponent: tab,
+          id: uuid(),
+          arrayIndex: i
         };
       });
       setTabList([...tabs]);
