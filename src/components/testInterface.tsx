@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TabBar from './tabs/tab-bar';
 import Tab from './tabs/tab';
 import uuid from 'uuid';
@@ -9,12 +9,26 @@ const tatabs = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 export interface TabxProps {
   history: any;
 }
-const TabW = ({ history }) => {
-  console.log(history);
-  console.log('re-render');
-  return <div />;
+const TabW = ({ theNumber, setTheNumber }) => {
+  return (
+    <div>
+      {theNumber}
+      <button onClick={() => setTheNumber(456)}>mude agora</button>
+    </div>
+  );
+};
+
+const Subtab = ({ theNumber, setTheNumber }) => {
+  return (
+    <TabBar closeable reorderable>
+      <Tab>
+        <TabW theNumber={theNumber} setTheNumber={setTheNumber} />
+      </Tab>
+    </TabBar>
+  );
 };
 const TabBx = (props: TabxProps) => {
+  const [theNumber, setTheNumber] = useState(123);
   return (
     <div>
       <TabBar
@@ -23,7 +37,7 @@ const TabBx = (props: TabxProps) => {
         reorderable
       >
         <Tab text="first">
-          <TabW history={props.history} />
+          <Subtab theNumber={theNumber} setTheNumber={setTheNumber} />
         </Tab>
         <Tab text="second">
           <form>
