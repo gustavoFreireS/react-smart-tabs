@@ -45,6 +45,7 @@ const TabBar = (props: TabBarProps) => {
   const pos3 = useRef(0);
   const [dragged, setDrag] = useState(null);
   const [tabList, setTabList] = useState([]);
+  const [deletedTab, setDeletedTab] = useState(null);
   const refList = useRef(
     React.Children.toArray(props.children).map(() => {
       return createRef<HTMLLIElement>();
@@ -97,7 +98,7 @@ const TabBar = (props: TabBarProps) => {
           arrayIndex: i
         };
       });
-      setTabList(tabs);
+      setTabList([...tabs]);
     }
     // modify tabLIst when a tab is modified from outside
     if (list.length === tabList.length) {
@@ -231,10 +232,10 @@ const TabBar = (props: TabBarProps) => {
       const frontTab = tabList[tabList.indexOf(tab) - 1];
       if (backTab) {
         props.onTabClose && props.onTabClose(tab, backTab);
-        // setActive(backTab);
+        setDeletedTab(tabList.indexOf(tab));
       } else {
         props.onTabClose && props.onTabClose(tab, frontTab);
-        // setActive(frontTab);
+        setDeletedTab(tabList.indexOf(tab));
       }
     } else {
       props.onTabClose(tab, null);
