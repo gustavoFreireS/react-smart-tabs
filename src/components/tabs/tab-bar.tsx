@@ -92,6 +92,7 @@ const TabBar = (props: TabBarProps) => {
     // modify tabLIst when a tab is removed from outside
     if (list.length < tabList.length) {
       const tabs = list.map((tab, i) => {
+        console.log(tab);
         return {
           tabComponent: tab,
           id: tab.id || uuid(),
@@ -231,15 +232,16 @@ const TabBar = (props: TabBarProps) => {
       const backTab = tabList[tabList.indexOf(tab) + 1];
       const frontTab = tabList[tabList.indexOf(tab) - 1];
       if (backTab) {
+        console.log('=== the tab', tab);
         props.onTabClose && props.onTabClose(tab, backTab);
-        setDeletedTab(tabList.indexOf(tab));
         setTabList(tabList.filter(item => item.id !== tab.id));
       } else {
+        console.log('=== the tab', tab);
         props.onTabClose && props.onTabClose(tab, frontTab);
-        setDeletedTab(tabList.indexOf(tab));
         setTabList(tabList.filter(item => item.id !== tab.id));
       }
     } else {
+      console.log('=== the tab', tab);
       props.onTabClose(tab, null);
       setTabList(tabList.filter(item => item.id !== tab.id));
     }
