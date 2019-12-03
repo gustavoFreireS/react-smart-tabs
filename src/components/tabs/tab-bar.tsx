@@ -80,6 +80,7 @@ const TabBar = (props: TabBarProps) => {
     // modify tabLIst when a tab is added from outside
     if (list.length > tabList.length && list.length > 0) {
       tabList.find(tab => tab.tabComponent.props === last.props);
+      console.log('===== the last ', last);
       const newElement = {
         tabComponent: last,
         id: uuid(),
@@ -104,6 +105,7 @@ const TabBar = (props: TabBarProps) => {
     // modify tabLIst when a tab is modified from outside
     if (list.length === tabList.length) {
       const active = list.find(tab => tab.props.active === true);
+      if (tabId === '') return;
       if (dragged) return;
       if (active) {
         setActive(active);
