@@ -228,6 +228,7 @@ const TabBar = (props: TabBarProps) => {
 
   // closes elements based on List Order
   const removeTab = (id: string, e: any, tab: any) => {
+    console.log(' ===== tab to be closed');
     if (checkActive(tab) && tabList.length > 1) {
       const backTab = tabList[tabList.indexOf(tab) + 1];
       const frontTab = tabList[tabList.indexOf(tab) - 1];
@@ -242,6 +243,7 @@ const TabBar = (props: TabBarProps) => {
       }
     } else {
       props.onTabClose(tab, null);
+      setTabList(tabList.filter(item => item.id !== tab.id));
     }
     setTabId('');
   };
