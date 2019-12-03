@@ -234,9 +234,11 @@ const TabBar = (props: TabBarProps) => {
       if (backTab) {
         props.onTabClose && props.onTabClose(tab, backTab);
         setDeletedTab(tabList.indexOf(tab));
+        setTabList(tabList.filter(item => item.id !== tab.id));
       } else {
         props.onTabClose && props.onTabClose(tab, frontTab);
         setDeletedTab(tabList.indexOf(tab));
+        setTabList(tabList.filter(item => item.id !== tab.id));
       }
     } else {
       props.onTabClose(tab, null);
