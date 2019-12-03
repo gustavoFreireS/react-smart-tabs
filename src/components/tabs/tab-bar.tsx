@@ -91,6 +91,7 @@ const TabBar = (props: TabBarProps) => {
     }
     // modify tabLIst when a tab is removed from outside
     if (list.length < tabList.length) {
+      console.log('should not rerender');
       const tabs = list.map((tab, i) => {
         return {
           tabComponent: tab,
