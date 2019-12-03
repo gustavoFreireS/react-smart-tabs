@@ -297,6 +297,7 @@ const TabBar = (props: TabBarProps) => {
           >
             {tabList.length > 0 &&
               tabList.map((child: any, i) => {
+                console.log('=== the tab to be rendered above', child);
                 const className = child.tabComponent.props.className;
                 const activeClassName =
                   child.tabComponent.props.classNameActive;
@@ -348,6 +349,7 @@ const TabBar = (props: TabBarProps) => {
       )}
       {tabList.length > 0 &&
         tabList.map((child: any) => {
+          console.log('=== the tab to be rendered', child);
           return (
             <div
               id={`${child.id}-panel`}
