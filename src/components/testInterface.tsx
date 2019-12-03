@@ -28,32 +28,28 @@ const Subtab = ({ theNumber, setTheNumber }) => {
   );
 };
 const TabBx = (props: TabxProps) => {
+  const [tempTabList, setTempTabs] = useState(tatabs);
   const [theNumber, setTheNumber] = useState(123);
   return (
     <div>
       <TabBar
         onTabClick={() => props.history.push('/test/' + uuid())}
+        onTabClose={(tab: any) => {
+          console.log('==== tab', tab);
+          return setTempTabs(
+            tempTabList.filter(
+              (it: any) => it !== tab.tabComponent.props.children.props.children
+            )
+          );
+        }}
         closeable
         reorderable
       >
-        <Tab text="first">
-          <Subtab theNumber={theNumber} setTheNumber={setTheNumber} />
-        </Tab>
-        <Tab text="second">
-          <form>
-            <input />
-          </form>
-        </Tab>
-        <Tab text="third">
-          <form>
-            <input />
-          </form>
-        </Tab>
-        <Tab text="fourty">
-          <form>
-            <input />
-          </form>
-        </Tab>
+        {tempTabList.map(tab => (
+          <Tab text="third" key={tab}>
+            <div>{tab}</div>
+          </Tab>
+        ))}
       </TabBar>
     </div>
   );

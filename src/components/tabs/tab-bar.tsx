@@ -91,11 +91,10 @@ const TabBar = (props: TabBarProps) => {
     }
     // modify tabLIst when a tab is removed from outside
     if (list.length < tabList.length) {
-      console.log('should not rerender');
       const tabs = list.map((tab, i) => {
         return {
           tabComponent: tab,
-          id: uuid(),
+          id: tab.id || uuid(),
           arrayIndex: i
         };
       });
@@ -228,7 +227,6 @@ const TabBar = (props: TabBarProps) => {
 
   // closes elements based on List Order
   const removeTab = (id: string, e: any, tab: any) => {
-    console.log(' ===== tab to be closed');
     if (checkActive(tab) && tabList.length > 1) {
       const backTab = tabList[tabList.indexOf(tab) + 1];
       const frontTab = tabList[tabList.indexOf(tab) - 1];
