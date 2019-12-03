@@ -90,17 +90,17 @@ const TabBar = (props: TabBarProps) => {
       refList.current.push(createRef<HTMLLIElement>());
     }
     // modify tabLIst when a tab is removed from outside
-    if (list.length < tabList.length) {
-      const tabs = list.map((tab, i) => {
-        console.log(tab);
-        return {
-          tabComponent: tab,
-          id: tab.id || uuid(),
-          arrayIndex: i
-        };
-      });
-      setTabList([...tabs]);
-    }
+    // if (list.length < tabList.length) {
+    //   const tabs = list.map((tab, i) => {
+    //     console.log(tab);
+    //     return {
+    //       tabComponent: tab,
+    //       id: tab.id || uuid(),
+    //       arrayIndex: i
+    //     };
+    //   });
+    //   setTabList([...tabs]);
+    // }
     // modify tabLIst when a tab is modified from outside
     if (list.length === tabList.length) {
       const active = list.find(tab => tab.props.active === true);
@@ -232,16 +232,16 @@ const TabBar = (props: TabBarProps) => {
       const backTab = tabList[tabList.indexOf(tab) + 1];
       const frontTab = tabList[tabList.indexOf(tab) - 1];
       if (backTab) {
-        console.log('=== the tab', tab);
+        console.log('=== the tab when has one in the back', tab);
         props.onTabClose && props.onTabClose(tab, backTab);
         setTabList(tabList.filter(item => item.id !== tab.id));
       } else {
-        console.log('=== the tab', tab);
+        console.log('=== the tab when has one in the front', tab);
         props.onTabClose && props.onTabClose(tab, frontTab);
         setTabList(tabList.filter(item => item.id !== tab.id));
       }
     } else {
-      console.log('=== the tab', tab);
+      console.log('=== the tab when there is no other', tab);
       props.onTabClose(tab, null);
       setTabList(tabList.filter(item => item.id !== tab.id));
     }
