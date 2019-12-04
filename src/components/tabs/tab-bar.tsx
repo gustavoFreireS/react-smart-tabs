@@ -75,12 +75,10 @@ const TabBar = (props: TabBarProps) => {
   useEffect(() => {
     const list = React.Children.toArray(props.children);
     const last = list[list.length - 1];
-
     if (tabList.length === 0 && list.length > 1) return;
     // modify tabLIst when a tab is added from outside
     if (list.length > tabList.length && list.length > 0) {
       tabList.find(tab => tab.tabComponent.props === last.props);
-      console.log('===== the last ', last);
       const newElement = {
         tabComponent: last,
         id: uuid(),
@@ -90,28 +88,21 @@ const TabBar = (props: TabBarProps) => {
       setActive(newElement);
       refList.current.push(createRef<HTMLLIElement>());
     }
-    // modify tabLIst when a tab is removed from outside
-    // if (list.length < tabList.length) {
-    //   const tabs = list.map((tab, i) => {
-    //     console.log(tab);
-    //     return {
-    //       tabComponent: tab,
-    //       id: tab.id || uuid(),
-    //       arrayIndex: i
-    //     };
-    //   });
-    //   setTabList([...tabs]);
-    // }
-    // modify tabLIst when a tab is modified from outside
     if (list.length === tabList.length) {
       const active = list.find(tab => tab.props.active === true);
-      if (isDeleted) return;
+      // if (isDeleted){
+      //   setIsDeleted(false);
+
+      // };
       if (dragged) return;
       if (active) {
         setActive(active);
       }
       const tabs = tabList.map(tab => {
-        const item = list.find((element, i) => i === tab.arrayIndex);
+        const item = list.find(element => {
+          return element.props.key === tab.tabComponent.props.key;
+        });
+        console.log('item', item);
         return {
           ...tab,
           tabComponent: item
@@ -234,19 +225,17 @@ const TabBar = (props: TabBarProps) => {
       const backTab = tabList[tabList.indexOf(tab) + 1];
       const frontTab = tabList[tabList.indexOf(tab) - 1];
       if (backTab) {
-        console.log('=== the tab when has one in the back', tab);
         props.onTabClose && props.onTabClose(tab, backTab);
         setTabList(tabList.filter(item => item.id !== tab.id));
       } else {
-        console.log('=== the tab when has one in the front', tab);
         props.onTabClose && props.onTabClose(tab, frontTab);
         setTabList(tabList.filter(item => item.id !== tab.id));
       }
     } else {
-      console.log('=== the tab when there is no other', tab);
       props.onTabClose(tab, null);
       setTabList(tabList.filter(item => item.id !== tab.id));
     }
+    setTabId('');
     setIsDeleted(true);
   };
 
@@ -299,7 +288,6 @@ const TabBar = (props: TabBarProps) => {
           >
             {tabList.length > 0 &&
               tabList.map((child: any, i) => {
-                console.log('=== the tab to be rendered above', child);
                 const className = child.tabComponent.props.className;
                 const activeClassName =
                   child.tabComponent.props.classNameActive;
@@ -351,7 +339,6 @@ const TabBar = (props: TabBarProps) => {
       )}
       {tabList.length > 0 &&
         tabList.map((child: any) => {
-          console.log('=== the tab to be rendered', child);
           return (
             <div
               id={`${child.id}-panel`}
