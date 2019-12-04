@@ -105,16 +105,12 @@ const TabBar = (props: TabBarProps) => {
     // modify tabLIst when a tab is modified from outside
     if (list.length === tabList.length) {
       const active = list.find(tab => tab.props.active === true);
-      if (isDeleted) {
-        setIsDeleted(false);
-        return;
-      }
       if (dragged) return;
       if (active) {
         setActive(active);
       }
       const tabs = tabList.map(tab => {
-        const item = list.find((element, i) => i === tab.arrayIndex);
+        const item = list.find(element => element.key === tab.tabComponent.key);
         return {
           ...tab,
           tabComponent: item
