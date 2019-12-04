@@ -46,7 +46,7 @@ const TabBx = (props: TabxProps) => {
         reorderable
       >
         {tempTabList.map(tab => (
-          <Tab text="third" key={tab}>
+          <Tab text={tab} key={tab}>
             <div>{tab}</div>
           </Tab>
         ))}

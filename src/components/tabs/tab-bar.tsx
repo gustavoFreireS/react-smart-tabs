@@ -106,7 +106,6 @@ const TabBar = (props: TabBarProps) => {
     if (list.length === tabList.length) {
       const active = list.find(tab => tab.props.active === true);
       if (isDeleted) {
-        setIsDeleted(false);
         return;
       }
       if (dragged) return;
