@@ -35,7 +35,6 @@ const TabBx = (props: TabxProps) => {
       <TabBar
         onTabClick={() => props.history.push('/test/' + uuid())}
         onTabClose={(tab: any) => {
-          console.log('==== tab', tab);
           return setTempTabs(
             tempTabList.filter(
               (it: any) => it !== tab.tabComponent.props.children.props.children
